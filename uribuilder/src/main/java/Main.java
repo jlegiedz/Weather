@@ -50,6 +50,7 @@ public class Main {
         printWeather(forecastLodz);
     }
 
+    //deserialiacja- z jsona na obiekt javy
     private static WeatherModel parseForecastJson(String forcastJson) {
         //tworzenie parsera
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
@@ -85,9 +86,9 @@ public class Main {
         }
 
     }
-
+    //wysylanie requesta- zwroci Jsona - text
     private static String requestForecastJson(URI uri) throws IOException {
-        String responseBody;
+        String responseBody; //json
         try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
             //The GET method means retrieve whatever information (in the form of an entity) is identified by the Request-URI.
             HttpGet httpget = new HttpGet(uri);

@@ -39,57 +39,6 @@ public class Main {
         }
     }
 
-    //deserializacja
-//    private static Optional<WeatherModel> parseForecastJson(String forcastJson) {
-//        try {
-//            //wez forcastJsona i zrob z niego instancje WeatherModel
-//            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-//            // tu nas
-//            return Optional.ofNullable(gson.fromJson(forcastJson, WeatherModel.class));
-//        } catch (JsonSyntaxException ex) {
-//            System.out.println(ex.getMessage());
-//            return Optional.empty();
-//        }
-//    }
-
-
-//    private static Optional<URI> buildUri(String baseUrl, String apikey, Query query) {
-//        try {
-//            URIBuilder builder = new URIBuilder(baseUrl)                      // baseUrl- zmienna wyzej przechowujacata http
-//                    .addParameter("appid", apikey)
-//                    .addParameter("units", "metric")
-//                    .addParameter("lang", "pl");
-//
-//            query.applyToBuilder(builder);
-//
-//            return Optional.of(builder.build());
-//        }
-//        catch(URISyntaxException e){
-//            System.err.println(e.getMessage());
-//            return Optional.empty();
-//        }
-//
-//    }
-
-//      //wysylanie requesta- zwroci Jsona - text
-//    private static Optional<String> requestForecastJson(URI uri) throws IOException {
-//        String responseBody; //zwraca Jsona
-//        try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
-//        //The GET method means retrieve whatever information (in the form of an entity) is identified by the Request-URI.
-//        HttpGet httpget = new HttpGet(uri);
-//
-//        System.out.println("Executing request " + httpget.getRequestLine());
-//
-//        // Create a custom response handler
-//        ResponseHandler<String> responseHandler = new StringResponseHandler();
-//        responseBody = httpclient.execute(httpget, responseHandler);
-//        System.out.println("----------------------------------------");
-//        System.out.println(responseBody);
-//    }
-//    //ofNullable jesli responseBody bedzie nullem to zwroci od razu Optional.empty
-//        return Optional.ofNullable(responseBody);
-//}
-
     // nothing changed:
     private static void printWeather(WeatherModel forecastCity) {
         System.out.println(forecastCity.getName());
@@ -99,6 +48,14 @@ public class Main {
             System.out.println(w.getDescription());
         }
         System.out.println(forecastCity.getMain().getTemp());
+    }
+
+    private static void beIdle(int seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
