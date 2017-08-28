@@ -5,7 +5,7 @@ import sda.code.model.WeatherModel;
 import static java.util.Objects.requireNonNull;
 
 
-public class QueryBuilder {
+public class generalQuery {
     private final OpenWeather api;
     private final String apiKey;
     private GeoQuery geoQuery;
@@ -13,26 +13,26 @@ public class QueryBuilder {
     private String units = "metric";
     private String langCode = "pl";
 
-    public QueryBuilder(OpenWeather api, String apiKey) {
+    public generalQuery(OpenWeather api, String apiKey) {
         this.api = requireNonNull(api);
         this.apiKey = requireNonNull(apiKey);
     }
 
-    public QueryBuilder withQuery(GeoQuery geoQuery) {
+    public generalQuery withQuery(GeoQuery geoQuery) {
         this.geoQuery = requireNonNull(geoQuery);
         return this;
     }
-    public QueryBuilder withQuery(CityQuery cityQuery) {
+    public generalQuery withQuery(CityQuery cityQuery) {
         this.cityQuery = requireNonNull(cityQuery);
         return this;
     }
 
-    public QueryBuilder withUnits(String units) {
+    public generalQuery withUnits(String units) {
         this.units = requireNonNull(units);
         return this;
     }
 
-    public QueryBuilder withLangCode(String langCode) {
+    public generalQuery withLangCode(String langCode) {
         this.langCode = requireNonNull(langCode);
         return this;
     }

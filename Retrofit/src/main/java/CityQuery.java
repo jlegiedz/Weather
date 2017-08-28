@@ -29,11 +29,13 @@ public class CityQuery implements Query {
     // apiKey- constant
     // Class retorfit2.Response<T> - an HTTP response
 
+    //api.weatherByQuery returns Call<> object : execute()-
+    // sends a equest and receives the response from OpenWeather api;
+    //body() : The deserialized(from json to java) response body of a successful response.
     @Override
     public Optional<WeatherModel> execute(OpenWeather api, String apiKey) throws IOException {
         Response<WeatherModel> response = api.weatherByQuery(apiKey, toString()).execute();
         if(response.isSuccessful()){
-            //body() : The deserialized(from json to java) response body of a successful response.
             return Optional.ofNullable(response.body());
         }
         else{
